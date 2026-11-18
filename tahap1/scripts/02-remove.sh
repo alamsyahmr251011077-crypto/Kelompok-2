@@ -1,6 +1,6 @@
 export DEBIAN_FRONTEND=noninteractive
 
-for pola in hexchat pidgin transmission gnome-mines gnome-sudoku sgt-puzzles parole gnumeric abiword; do
+for pola in hexchat pidgin transmission gnome-mines gnome-sudoku sgt-puzzles parole gnumeric abiword libreoffice gimp rythmbox simple-scan xfburn; do
   PKGS=$(dpkg -l "${pola}*" 2>/dev/null | awk '/^ii/ {print $2}')
   if [ -n "$PKGS" ]; then
     echo "Menghapus: $PKGS"
@@ -10,5 +10,7 @@ for pola in hexchat pidgin transmission gnome-mines gnome-sudoku sgt-puzzles par
   fi
 done
 
-dpkg -s xfce4-session >/dev/null 2>&1 || { echo "GAGAL: XFCE ikut terhapus"; exit 1; }
+for wajib in xcfe-session xfwm4 lightdm thunar; do
+  dpkg -s "$wajib" >/dev/null 2>&1 || { echo "GAGAL: $wajib ikut terhapus"; exit 1; }
+done
 echo "02-remove selesai."
