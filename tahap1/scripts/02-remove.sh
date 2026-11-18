@@ -1,13 +1,12 @@
 export DEBIAN_FRONTEND=noninteractive
 
-PAKET="pidgin transmission-gtk transmission-common gnome-mines gnome-sudoku sgt-puzzles parole gnumeric abiword hexchat"
-
-for p in $PAKET; do
-  if dpkg -s "$p" >/dev/null 2>&1; then
-    echo "Menghapus $p"
-    apt remove --purge -y "$p"
+for pola in hexchat pidgin transmission gnome-mines gnome-sudoku sgt-puzzles parole gnumeric abiword; do
+  PKGS=$(dpkg -l "${pola}*" 2>/dev/null | awk '/^ii/ {print $2}')
+  if [ -n "$PKGS" ]; then
+    echo "Menghapus: $PKGS"
+    apt remove --purge -y $PKGS
   else
-    echo "Lewati $p (tidak terpasang)"
+    echo "Lewati $pola (tidak terpasang)"
   fi
 done
 
