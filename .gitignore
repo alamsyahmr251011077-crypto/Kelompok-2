@@ -1,0 +1,8 @@
+*.iso
+*.img
+output/
+dl/
+buildroot/
+cubic-build*/
+Raihan/
+
