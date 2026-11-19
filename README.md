@@ -10,7 +10,8 @@ Token kelompok: (isi token dari dosen)
 | 3 | Firmansyah | Paket MQTT dan jaringan |
 | 4 | Muhammad Reihan | Paket Pemrograman |
 | 5 | Klara Airelin Kele | Paket Serial dan Data |
-| 6 | Yuninda Pabaru |  |
+| 6 | Yuninda Pabaru' | Tambah Skrip Desktop Ringan XCFE |
+| 7 | Akran Muis | Tambah skrip nama distro nexus dan logo |
 
 ## Versi
 - ISO induk: xubuntu-24.04.3-desktop-amd64.iso
