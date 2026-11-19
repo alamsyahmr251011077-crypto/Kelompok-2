@@ -11,7 +11,8 @@ Token kelompok: (isi token dari dosen)
 | 4 | Muhammad Reihan | Paket Pemrograman |
 | 5 | Klara Airelin Kele | Paket Serial dan Data |
 | 6 | Yuninda Pabaru' | Tambah Skrip Desktop Ringan XCFE |
-| 7 | Akran Muis | Tambah skrip nama distro nexus dan logo |
+| 7 | Akram Muis | Tambah skrip nama distro nexus, dan logo |
+| 8 | Muhammad Aisar | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
 
 ## Versi
 - ISO induk: xubuntu-24.04.3-desktop-amd64.iso
