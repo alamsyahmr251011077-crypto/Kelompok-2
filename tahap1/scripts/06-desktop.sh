@@ -1,4 +1,5 @@
 export DEBIAN_FRONTEND=noninteractive
+
 dpkg -s xfce4-session >/dev/null 2>&1 || apt install -y xfce4 xfce4-terminal
 
 mkdir -p /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml
@@ -25,7 +26,7 @@ cat > /etc/skel/Desktop/nexus-mqtt-monitor.desktop <<'EOF'
 Type=Application
 Name=Monitor MQTT
 Exec=xfce4-terminal --hold -x mosquitto_sub -h localhost -t "#" -v
-Icon=network-wired
+Icon=nexus-logo
 Terminal=false
 EOF
 chmod +x /etc/skel/Desktop/*.desktop
