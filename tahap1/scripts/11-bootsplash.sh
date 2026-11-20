@@ -8,7 +8,7 @@ if [ ! -f "$LOGO" ]; then
   exit 0
 fi
 
-apt install -y plymouth plymouth-theme-ubuntu-logo
+apt install -y plymouth
 mkdir -p "$TEMA"
 cp "$LOGO" "$TEMA/logo.png"
 
@@ -36,5 +36,4 @@ update-alternatives --install /usr/share/plymouth/themes/default.plymouth defaul
 update-alternatives --set default.plymouth "$TEMA/nexus.plymouth"
 
 update-initramfs -u -k all || echo "PERINGATAN: update-initramfs bermasalah, periksa log"
-
 echo "11-bootsplash selesai."
