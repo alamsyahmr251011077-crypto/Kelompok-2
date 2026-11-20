@@ -12,15 +12,6 @@ cat > /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml <<'EOF'
 </channel>
 EOF
 
-mkdir -p /etc/skel/Desktop
-cat > /etc/skel/Desktop/nexus-terminal.desktop <<'EOF'
-[Desktop Entry]
-Type=Application
-Name=Terminal Nexus
-Exec=xfce4-terminal
-Icon=utilities-terminal
-Terminal=false
-EOF
 cat > /etc/skel/Desktop/nexus-mqtt-monitor.desktop <<'EOF'
 [Desktop Entry]
 Type=Application
