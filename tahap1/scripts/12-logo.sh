@@ -1,18 +1,17 @@
 LOGO=/usr/share/pixmaps/nexus-logo.png
-if [ ! -f "$LOGO" ]; then
-  echo "PERINGATAN: $LOGO tidak ada (07-identity.sh harus berjalan lebih dulu)"
+WALL=/usr/share/backgrounds/nexus/wallpaper.png
+
+if [ ! -d /etc/lightdm ]; then
+  echo "INFO: LightDM tidak ditemukan, logo layar login dilewati"
   exit 0
 fi
 
-CONF=/etc/gdm3/greeter.dconf-defaults
-if [ -f "$CONF" ]; then
-  if grep -q '^\[org/gnome/login-screen\]' "$CONF"; then
-    sed -i "/^\[org\/gnome\/login-screen\]/a logo='$LOGO'" "$CONF"
-  else
-    printf "\n[org/gnome/login-screen]\nlogo='%s'\n" "$LOGO" >> "$CONF"
-  fi
-  grep -n "logo=" "$CONF"
-else
-  echo "INFO: $CONF tidak ditemukan, logo layar login dilewati"
-fi
+mkdir -p /etc/lightdm/lightdm-gtk-greeter.conf.d
+cat > /etc/lightdm/lightdm-gtk-greeter.conf.d/99-nexus.conf <<EOF
+[greeter]
+background=$WALL
+default-user-image=$LOGO
+EOF
+
+ls /etc/lightdm /etc/lightdm/lightdm-gtk-greeter.conf.d
 echo "12-logo selesai."
