@@ -13,9 +13,9 @@ Token kelompok: 002
 | 6 | Yuninda Pabaru' | Tambah Skrip Desktop Ringan XCFE |
 | 7 | Akram Muis | Tambah skrip nama distro nexus, dan logo |
 | 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
-| 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
-| 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
-| 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
+| 9 | Charistheo Rehaliel Cahyono | Tambah Skrip Bahasa, Zona Waktu, Template pengguna, dan alasan |
+| 10 | Muhammad Saeed | Tambah Skrip First-login dan alasan |
+| 8 | Vincensius Chandra Pratama | Tambah catatan alasan boot splash |
 
 ## Versi
 - ISO induk: xubuntu-22.04.5-desktop-amd64.iso
