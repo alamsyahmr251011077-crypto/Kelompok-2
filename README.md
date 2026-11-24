@@ -1,6 +1,6 @@
 # Proyek SO - Kelompok 2 (Topik 3: Distro Pengembang IoT)
 
-Token kelompok: (isi token dari dosen)
+Token kelompok: 002
 
 ## Anggota
 | No | Nama | Peran |
@@ -13,13 +13,16 @@ Token kelompok: (isi token dari dosen)
 | 6 | Yuninda Pabaru' | Tambah Skrip Desktop Ringan XCFE |
 | 7 | Akram Muis | Tambah skrip nama distro nexus, dan logo |
 | 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
+| 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
+| 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
+| 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
 
 ## Versi
 - ISO induk: xubuntu-24.04.3-desktop-amd64.iso
   SHA256: b61e083d8a5ab003bad6ef7ea31ec21d7bfdf19b99d75987ab3fa3bbe85ec1bf
 - Nama distro hasil: Nexus 1.0
 - Alat Tahap 1: Cubic
-- Buildroot: (versi LTS dari dosen)
+- Buildroot: LTS 2026.02
 
 ## Struktur
 - tahap1/ : skrip dan konfigurasi distro (scripts/, alasan/, assets/)
