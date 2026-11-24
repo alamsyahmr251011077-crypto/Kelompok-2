@@ -15,7 +15,7 @@ Token kelompok: 002
 | 8 | Muhammad Aisar Idhan Nur | Tambah Skrip Wallpaper, Nexus OS, Gambar dan alasan |
 | 9 | Charistheo Rehaliel Cahyono | Tambah Skrip Bahasa, Zona Waktu, Template pengguna, dan alasan |
 | 10 | Muhammad Saeed | Tambah Skrip First-login dan alasan |
-| 8 | Vincensius Chandra Pratama | Tambah catatan alasan boot splash |
+| 11 | Vincensius Chandra Pratama | Tambah catatan alasan boot splash |
 
 ## Versi
 - ISO induk: xubuntu-22.04.5-desktop-amd64.iso
