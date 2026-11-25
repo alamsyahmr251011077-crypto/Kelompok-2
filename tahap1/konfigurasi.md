@@ -1,16 +1,15 @@
+
 # Dokumentasi Konfigurasi Nexus OS 1.0
 
 ## 1. Pendahuluan
 
 Nexus OS 1.0 merupakan distro Linux hasil modifikasi dari Xubuntu 22.04.5 yang dikembangkan untuk mendukung kebutuhan pengembangan Internet of Things (IoT).
 
-Proses kustomisasi dilakukan menggunakan Cubic dengan bantuan skrip Bash yang disimpan di repository GitHub kelompok. Konfigurasi yang diterapkan meliputi identitas distro, desktop XFCE, branding, bahasa, zona waktu, template pengguna, first-login, boot splash, layar login, dan layanan MQTT.
-
-Dokumentasi ini menjelaskan pengaturan sistem yang diterapkan melalui skrip pada folder `tahap1/scripts/`.
+Konfigurasi dilakukan menggunakan Cubic dengan bantuan skrip Bash yang disimpan di repository GitHub kelompok. Penyesuaian meliputi identitas distro, desktop XFCE, branding, bahasa, zona waktu, template pengguna, first-login, boot splash, dan layar login.
 
 ## 2. Identitas Distro
 
-Berikut identitas sistem operasi yang dikembangkan:
+Berikut identitas sistem operasi Nexus:
 
 | Komponen | Konfigurasi |
 |---|---|
@@ -20,29 +19,19 @@ Berikut identitas sistem operasi yang dikembangkan:
 | Arsitektur | AMD64 (x86_64) |
 | Alat kustomisasi | Cubic |
 
-Pengaturan identitas dilakukan menggunakan skrip `07-identitas.sh`.
-
-Beberapa file sistem yang dimodifikasi meliputi:
+Identitas distro diatur menggunakan skrip `07-identitas.sh` melalui perubahan beberapa file sistem:
 
 - `/etc/os-release`
 - `/etc/lsb-release`
 - `/etc/issue`
 
-Nama distribusi diubah menjadi Nexus, sedangkan nilai `ID` pada `/etc/os-release` tetap menggunakan `ubuntu` untuk mempertahankan kompatibilitas dengan alat dan paket berbasis Ubuntu.
-
-Logo distro juga dipasang pada:
-
-`/usr/share/pixmaps/nexus-logo.png`
-
-Selain itu, identitas logo ditambahkan melalui variabel `LOGO=nexus-logo` pada `/etc/os-release`.
+Nama distro diubah menjadi Nexus, sedangkan ID sistem tetap menggunakan `ubuntu` untuk menjaga kompatibilitas dengan alat dan paket berbasis Ubuntu.
 
 ## 3. Konfigurasi Desktop XFCE
 
 Nexus menggunakan desktop environment XFCE bawaan Xubuntu karena memiliki tampilan sederhana dan ringan.
 
-Pengaturan desktop dilakukan menggunakan skrip `06-desktop.sh`.
-
-Konfigurasi yang diterapkan meliputi:
+Pengaturan desktop dilakukan menggunakan skrip `06-desktop.sh`, dengan konfigurasi sebagai berikut:
 
 | Pengaturan | Konfigurasi |
 |---|---|
@@ -51,81 +40,52 @@ Konfigurasi yang diterapkan meliputi:
 | Pintasan pertama | Terminal Nexus |
 | Pintasan kedua | Monitor MQTT |
 
-### 3.1 Pengaturan Compositing
+Compositing dinonaktifkan melalui file konfigurasi `xfwm4.xml` yang ditempatkan pada template pengguna di:
 
-Compositing dinonaktifkan melalui konfigurasi XFWM4 dengan mengatur nilai:
+`/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/`
 
-`use_compositing = false`
+Selain itu, dibuat dua pintasan desktop:
 
-File konfigurasi ditempatkan pada direktori template pengguna:
+- **Terminal Nexus:** membuka terminal XFCE untuk menjalankan perintah Linux.
+- **Monitor MQTT:** membuka terminal untuk memantau pesan MQTT dari broker lokal menggunakan perintah `mosquitto_sub`.
 
-`/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml`
-
-Pengaturan ini bertujuan mengurangi penggunaan sumber daya untuk efek visual desktop.
-
-### 3.2 Pintasan Desktop
-
-Nexus menyediakan dua pintasan pada desktop pengguna.
-
-1. **Terminal Nexus**
-
-   Digunakan untuk membuka terminal XFCE dengan menjalankan perintah `xfce4-terminal`.
-
-2. **Monitor MQTT**
-
-   Digunakan untuk memantau pesan MQTT dari broker lokal menggunakan perintah:
-
-   `mosquitto_sub -h localhost -t "#" -v`
-
-Kedua pintasan dibuat dalam format file `.desktop` dan disimpan pada:
-
-`/etc/skel/Desktop/`
-
-Direktori tersebut merupakan template desktop bagi pengguna baru.
+Kedua pintasan disimpan pada direktori `/etc/skel/Desktop/` agar tersedia bagi pengguna baru.
 
 ## 4. Konfigurasi Branding
 
-Branding diterapkan untuk memberikan identitas visual pada Nexus OS.
+Branding diterapkan untuk memberikan identitas visual Nexus OS.
 
 ### 4.1 Logo Distro
 
 Logo Nexus berasal dari file `logo.png` pada folder `tahap1/assets/`.
 
-File tersebut disalin ke:
+Logo dipasang ke lokasi:
 
 `/usr/share/pixmaps/nexus-logo.png`
 
-Proses pemasangan logo dilakukan oleh skrip `07-identitas.sh`.
+Proses pemasangan dilakukan oleh skrip `07-identitas.sh`.
 
 ### 4.2 Wallpaper
 
 Wallpaper Nexus berasal dari file `wallpaper.png` pada folder `tahap1/assets/`.
 
-Wallpaper dipasang pada:
+Wallpaper dipasang ke:
 
 `/usr/share/backgrounds/nexus/wallpaper.png`
 
-Pengaturan ini dilakukan menggunakan skrip `08-wallpaper.sh`.
+Pengaturan wallpaper dilakukan oleh skrip `08-wallpaper.sh`.
 
-Skrip tersebut juga membuat program `nexus-wallpaper.sh` pada:
-
-`/usr/local/bin/nexus-wallpaper.sh`
-
-Program dijalankan secara otomatis melalui file autostart:
-
-`/etc/xdg/autostart/nexus-wallpaper.desktop`
-
-Program akan menunggu beberapa detik setelah pengguna masuk ke desktop, kemudian menerapkan wallpaper Nexus menggunakan XFConf. Penanda `.nexus_wallpaper_done` dibuat setelah penerapan wallpaper berhasil.
+Skrip tersebut juga membuat program `nexus-wallpaper.sh` yang dijalankan secara otomatis ketika pengguna masuk ke desktop melalui konfigurasi autostart XFCE.
 
 ### 4.3 Layar Login
 
 Layar login menggunakan LightDM GTK Greeter.
 
-Pengaturan dilakukan melalui skrip `12-logo.sh` dengan membuat file:
+Pengaturan dilakukan oleh skrip `12-logo.sh` melalui file:
 
 `/etc/lightdm/lightdm-gtk-greeter.conf.d/99-nexus.conf`
 
-Konfigurasi tersebut mengatur:
+Konfigurasi tersebut meliputi:
 
 - Wallpaper Nexus sebagai latar belakang layar login.
 - Logo Nexus sebagai gambar pengguna default.
@@ -144,8 +104,6 @@ Pengaturan dilakukan melalui beberapa perintah:
 - Membuat locale `id_ID.UTF-8` menggunakan `locale-gen`.
 - Menetapkan `LANG=id_ID.UTF-8` pada `/etc/default/locale`.
 - Memperbarui pengaturan locale menggunakan `update-locale`.
-
-Catatan hasil pemeriksaan: pada sesi pengguna yang diperiksa, nilai `LANG` masih menunjukkan `en_US.UTF-8`, sedangkan beberapa kategori regional seperti `LC_TIME`, `LC_NUMERIC`, dan `LC_MONETARY` sudah menunjukkan `id_ID.UTF-8`. Oleh karena itu, penerapan bahasa aktif masih perlu diverifikasi lebih lanjut.
 
 ### 5.2 Zona Waktu
 
@@ -167,24 +125,21 @@ Skrip `09-locale.sh` membuat folder:
 
 `/etc/skel/iot-projects/`
 
-Folder tersebut dilengkapi file `README.txt` yang berisi informasi singkat mengenai lingkungan pengembangan IoT dan contoh pengujian komunikasi MQTT menggunakan perintah:
+Folder tersebut dilengkapi file `README.txt` yang berisi informasi singkat mengenai lingkungan pengembangan IoT dan contoh pengujian komunikasi MQTT menggunakan perintah `mosquitto_sub` dan `mosquitto_pub`.
 
-- `mosquitto_sub`
-- `mosquitto_pub`
-
-Template tersebut akan disalin ke direktori home ketika pengguna baru dibuat melalui proses instalasi.
+Template ini akan disalin ke direktori home ketika pengguna baru dibuat melalui proses instalasi.
 
 ## 7. Konfigurasi First-Login
 
-Nexus menyediakan skrip khusus yang dijalankan ketika pengguna pertama kali masuk ke desktop.
+Nexus menyediakan skrip khusus yang berjalan saat pengguna pertama kali masuk ke desktop.
 
-Pengaturan dilakukan menggunakan skrip `10-firstlogin.sh`.
+Pengaturan dilakukan oleh skrip `10-firstlogin.sh`.
 
 Skrip tersebut membuat program:
 
 `/usr/local/bin/nexus-firstlogin.sh`
 
-Program dijalankan secara otomatis melalui file:
+Program dijalankan secara otomatis melalui file autostart:
 
 `/etc/xdg/autostart/nexus-firstlogin.desktop`
 
@@ -192,35 +147,31 @@ Fungsi first-login meliputi:
 
 1. Memeriksa apakah pengguna sudah pernah melakukan login pertama.
 2. Membuat folder `iot-projects` pada direktori home pengguna.
-3. Mencatat waktu login pertama pada file `iot-projects/firstlogin.log`.
+3. Mencatat waktu login pertama ke file `iot-projects/firstlogin.log`.
 4. Menampilkan notifikasi selamat datang.
 5. Membuat penanda `.nexus_firstlogin_done` agar proses tidak dijalankan berulang kali.
 
 ## 8. Konfigurasi Boot Splash
 
-Nexus menggunakan Plymouth untuk menampilkan logo ketika sistem melakukan proses booting.
+Nexus menggunakan Plymouth untuk menampilkan logo saat proses booting pada sistem yang sudah diinstal.
 
-Pengaturan dilakukan menggunakan skrip `11-bootsplash.sh`.
+Pengaturan dilakukan oleh skrip `11-bootsplash.sh`.
 
 Tema Plymouth disimpan pada direktori:
 
 `/usr/share/plymouth/themes/nexus/`
 
-File yang digunakan meliputi:
+Berkas yang digunakan meliputi:
 
 - `nexus.plymouth`
 - `nexus.script`
 - `logo.png`
 
-Konfigurasi tema meliputi:
-
-- Mengatur latar belakang berwarna gelap.
-- Memuat logo Nexus dengan ukuran 256 × 256 piksel.
-- Menempatkan logo di tengah layar.
+Logo Nexus ditampilkan di tengah layar sebagai identitas visual saat proses booting.
 
 Tema diaktifkan menggunakan `update-alternatives`, kemudian konfigurasi initramfs diperbarui menggunakan `update-initramfs`.
 
-Catatan: boot splash Nexus berlaku pada sistem yang sudah diinstal. Tampilan boot saat menjalankan ISO sebagai Live Session masih menggunakan tampilan bawaan Xubuntu karena berasal dari initrd ISO induk.
+**Catatan:** Boot splash Nexus berlaku pada sistem yang sudah diinstal. Saat menjalankan ISO sebagai Live Session, tampilan boot masih menggunakan tampilan bawaan Xubuntu karena berasal dari initrd ISO induk.
 
 ## 9. Konfigurasi Layanan IoT
 
@@ -234,14 +185,11 @@ Pengaturan dilakukan melalui skrip `03-mqtt.sh`, yang meliputi:
 - Memasang Mosquitto Clients untuk pengujian komunikasi.
 - Mengaktifkan layanan Mosquitto menggunakan `systemctl enable mosquitto`.
 
-Selain itu, Nexus menyediakan lingkungan pemrograman, komunikasi serial, dan pengolahan data melalui paket-paket yang dipasang menggunakan:
+Selain itu, Nexus menyediakan lingkungan pemrograman, komunikasi serial, dan pengolahan data menggunakan paket-paket yang dipasang melalui skrip `04-dev.sh` dan `05-serial.sh`.
 
-- `04-dev.sh` untuk lingkungan pemrograman.
-- `05-serial.sh` untuk komunikasi serial dan pengolahan data.
+## 10. Daftar Skrip Konfigurasi
 
-## 10. Daftar Skrip yang Mengatur Konfigurasi
-
-Konfigurasi Nexus diterapkan melalui skrip yang tersimpan pada folder `tahap1/scripts/`.
+Konfigurasi Nexus diterapkan menggunakan skrip yang tersimpan pada folder `tahap1/scripts/`.
 
 | Nama Skrip | Fungsi |
 |---|---|
@@ -253,12 +201,12 @@ Konfigurasi Nexus diterapkan melalui skrip yang tersimpan pada folder `tahap1/sc
 | `11-bootsplash.sh` | Membuat dan mengaktifkan tema Plymouth |
 | `12-logo.sh` | Mengatur logo dan wallpaper layar login |
 
-Skrip `customize.sh` bertugas menjalankan seluruh skrip kustomisasi secara berurutan di dalam lingkungan Cubic.
+Seluruh skrip kustomisasi dijalankan secara berurutan melalui file `customize.sh` yang berada di dalam folder `tahap1/`.
 
 ## 11. Penutup
 
-Konfigurasi Nexus OS 1.0 dirancang untuk menghasilkan sistem operasi dengan desktop XFCE yang ringan serta menyediakan lingkungan kerja yang mendukung kebutuhan pengembangan IoT.
+Konfigurasi Nexus OS 1.0 dirancang untuk menghasilkan sistem operasi dengan desktop XFCE yang ringan serta menyediakan lingkungan kerja yang mendukung pengembangan IoT.
 
 Penyesuaian sistem mencakup identitas distro, desktop, branding, bahasa, zona waktu, template pengguna, first-login, boot splash, layar login, dan layanan MQTT.
 
-Seluruh proses konfigurasi dikelola melalui skrip Bash yang tersimpan di repository GitHub kelompok agar proses kustomisasi dapat didokumentasikan dan ditelusuri.
+Seluruh konfigurasi dan proses kustomisasi didokumentasikan melalui repository GitHub kelompok agar proses pengerjaan dan pembangunan ulang ISO dapat dipahami serta ditelusuri.
