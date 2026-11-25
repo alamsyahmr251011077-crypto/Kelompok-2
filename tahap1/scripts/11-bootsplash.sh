@@ -24,12 +24,12 @@ ScriptFile=/usr/share/plymouth/themes/nexus/nexus.script
 EOF
 
 cat > "$TEMA/nexus.script" <<'EOF'
-Window.SetBackgroundTopColor(0.08, 0.08, 0.12);
-Window.SetBackgroundBottomColor(0.08, 0.08, 0.12);
-logo.image = Image("logo.png").Scale(256, 256);
+Window.SetBackgroundTopColor(0.0, 0.0, 0.0);
+Window.SetBackgroundBottomColor(0.0, 0.0, 0.0);
+logo.image = Image("logo.png").Scale(Window.GetWidth(), Window.GetHeight());
 logo.sprite = Sprite(logo.image);
-logo.sprite.SetX(Window.GetX() + Window.GetWidth() / 2 - 128);
-logo.sprite.SetY(Window.GetY() + Window.GetHeight() / 2 - 128);
+logo.sprite.SetX(Window.GetX());
+logo.sprite.SetY(Window.GetY());
 EOF
 
 update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth "$TEMA/nexus.plymouth" 200
