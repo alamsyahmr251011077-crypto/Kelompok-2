@@ -19,7 +19,7 @@ Token kelompok: 002
 
 ## Versi
 - ISO induk: xubuntu-22.04.5-desktop-amd64.iso
-  SHA256: b61e083d8a5ab003bad6ef7ea31ec21d7bfdf19b99d75987ab3fa3bbe85ec1bf
+  SHA256: 864e2cf7f23a9e76a8e56d9187af5654d0155bac449e9e3063c696ec1281346c
 - Nama distro hasil: Nexus 1.0
 - Alat Tahap 1: Cubic
 - Buildroot: LTS 2026.02
