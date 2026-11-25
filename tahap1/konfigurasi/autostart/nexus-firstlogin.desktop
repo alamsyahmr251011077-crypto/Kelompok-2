@@ -1,0 +1,5 @@
+
+[Desktop Entry]
+Type=Application
+Name=Nexus First Login
+Exec=/usr/local/bin/nexus-firstlogin.sh
