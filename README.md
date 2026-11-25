@@ -82,13 +82,15 @@ Semua skrip selesai.
 
 Tidak boleh ada pesan `GAGAL` selama proses kustomisasi berlangsung.
 
+
 ### 5. Menghasilkan ISO Nexus
 
 1. Bersihkan file sementara dan cache APT setelah proses kustomisasi selesai.
 2. Lanjutkan ke tahap pembuatan ISO pada Cubic.
-3. Pilih metode kompresi **gzip**.
+3. Pilih metode kompresi **xz**.
 4. Klik **Generate** untuk memulai proses pembuatan ISO.
 5. Setelah selesai, pastikan file `nexus-os-1.0.iso` berhasil dibuat.
+
 
 ### 6. Pengujian ISO
 
