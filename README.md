@@ -5,7 +5,7 @@ Token kelompok: 002
 ## Anggota
 | No | Nama | Peran |
 |---|---|---|
-| 1 | Sayyid As'ad | Ketua |
+| 1 | Sayyid As'ad | Membuat Struktur folder, README, .gitignore, customize.sh, daftar paket, konfigurasi |
 | 2 | Muhammad Raihan Alamsyah | Hapus paket |
 | 3 | Firmansyah | Paket MQTT dan jaringan |
 | 4 | Muhammad Reihan | Paket Pemrograman |
