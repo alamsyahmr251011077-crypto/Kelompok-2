@@ -1,7 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=Monitor MQTT
-Exec=xfce4-terminal --hold -x mosquitto_sub -h localhost -t "#" -v
-Icon=nexus-logo
-Terminal=false

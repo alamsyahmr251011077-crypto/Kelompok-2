@@ -1,7 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=Terminal Nexus
-Exec=xfce4-terminal
-Icon=utilities-terminal
-Terminal=false
